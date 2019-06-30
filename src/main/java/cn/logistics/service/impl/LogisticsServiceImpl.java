@@ -96,6 +96,11 @@ public class LogisticsServiceImpl implements LogisticsService {
     }
 
     @Override
+    public String queryActuralLogisticsByNumAndCom(String company, String number) {
+        return KuaiDi100Util.query(number,company);
+    }
+
+    @Override
     public String rollbackKuaiDi100(HttpServletRequest request, HttpServletResponse response){
         Gson gson = new Gson();
         Map<String,Object> map = new HashMap<String, Object>();

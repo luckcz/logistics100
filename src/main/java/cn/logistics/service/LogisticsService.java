@@ -11,4 +11,5 @@ public interface LogisticsService {
     public String addData();
     public String rollbackKuaiDi100(HttpServletRequest request, HttpServletResponse response);
     public String subscribleLogisticsPost(String company,String number);
+    public String queryActuralLogisticsByNumAndCom(String company,String number);
 }

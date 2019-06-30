@@ -5,8 +5,8 @@
     <id column="id" jdbcType="BIGINT" property="id" />
     <result column="logistics_no" jdbcType="VARCHAR" property="logisticsNo" />
     <result column="express_compan_code" jdbcType="VARCHAR" property="expressCompanCode" />
-    <result column="status" jdbcType="VARCHAR" property="status" />
-    <result column="is_check" jdbcType="VARCHAR" property="isCheck" />
+    <result column="status" jdbcType="INTEGER" property="status" />
+    <result column="is_check" jdbcType="INTEGER" property="isCheck" />
     <result column="order_id" jdbcType="BIGINT" property="orderId" />
     <result column="express_compan" jdbcType="VARCHAR" property="expressCompan" />
   </resultMap>
@@ -64,10 +64,10 @@
         #{expressCompanCode,jdbcType=VARCHAR},
       </if>
       <if test="status != null">
-        #{status,jdbcType=VARCHAR},
+        #{status,jdbcType=INTEGER},
       </if>
       <if test="isCheck != null">
-        #{isCheck,jdbcType=VARCHAR},
+        #{isCheck,jdbcType=INTEGER},
       </if>
       <if test="orderId != null">
         #{orderId,jdbcType=BIGINT},
@@ -90,10 +90,10 @@
         express_compan_code = #{expressCompanCode,jdbcType=VARCHAR},
       </if>
       <if test="status != null">
-        status = #{status,jdbcType=VARCHAR},
+        status = #{status,jdbcType=INTEGER},
       </if>
       <if test="isCheck != null">
-        is_check = #{isCheck,jdbcType=VARCHAR},
+        is_check = #{isCheck,jdbcType=INTEGER},
       </if>
       <if test="orderId != null">
         order_id = #{orderId,jdbcType=BIGINT},
@@ -127,10 +127,10 @@
         express_compan_code = #{expressCompanCode,jdbcType=VARCHAR},
       </if>
       <if test="status != null">
-        status = #{status,jdbcType=VARCHAR},
+        status = #{status,jdbcType=INTEGER},
       </if>
       <if test="isCheck != null">
-        is_check = #{isCheck,jdbcType=VARCHAR},
+        is_check = #{isCheck,jdbcType=INTEGER},
       </if>
       <if test="orderId != null">
         order_id = #{orderId,jdbcType=BIGINT},

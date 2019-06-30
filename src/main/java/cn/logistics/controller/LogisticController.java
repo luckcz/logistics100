@@ -6,6 +6,7 @@ import cn.logistics.vo.ParamBody;
 import cn.logistics.vo.TaskRequest;
 import com.google.gson.Gson;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -58,6 +59,18 @@ public class LogisticController {
     }
 
     /**
+     * 订单订阅物流信息
+     *
+     * @param
+     * @return
+     */
+    @GetMapping("/api/logistics/subscribleActual")
+    public String subscribleLogistics(@RequestParam("com") String company, @RequestParam("nu") String number) {
+        log.info("订阅的运单编号为【{}】,快递公司编码为【{}】",number,company);
+        return logisticsService.subscribleLogisticsPost(company,number);
+    }
+
+    /**
      * 根据订单号查询物流信息
      * @param orderId
      * @return
@@ -71,5 +84,10 @@ public class LogisticController {
     public String rollbackKuaiDi100(@RequestBody ParamBody paramBody , HttpServletRequest request, HttpServletResponse response){
         request.setAttribute("param",new Gson().toJson(paramBody));
         return logisticsService.rollbackKuaiDi100(request,response);
+    }
+
+    @GetMapping("/queryActuralLogisticsByNumAndCom")
+    public String queryActuralLogisticsByNumAndCom(@RequestParam("com") String company, @RequestParam("nu") String number){
+        return logisticsService.queryActuralLogisticsByNumAndCom(company, number);
     }
 }
