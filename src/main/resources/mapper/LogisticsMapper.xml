@@ -9,10 +9,12 @@
     <result column="is_check" jdbcType="INTEGER" property="isCheck" />
     <result column="order_id" jdbcType="BIGINT" property="orderId" />
     <result column="express_compan" jdbcType="VARCHAR" property="expressCompan" />
+    <result column="data" jdbcType="VARCHAR" property="data" />
+    <result column="push_time" jdbcType="DATE" property="pushTime" />
   </resultMap>
 
   <sql id="Base_Column_List">
-    id, logistics_no, express_compan_code, status, is_check, order_id, express_compan
+    id, logistics_no, express_compan_code, status, is_check, order_id, express_compan,data,push_time
   </sql>
 
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
@@ -52,6 +54,7 @@
       <if test="data != null">
         data,
       </if>
+      push_time,
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
       <if test="id != null">
@@ -78,6 +81,7 @@
       <if test="data != null">
         #{data,jdbcType=LONGVARCHAR},
       </if>
+      now(),
     </trim>
   </insert>
   <update id="updateByPrimaryKeySelective" parameterType="cn.logistics.entity.LogisticsEntity">
@@ -104,6 +108,7 @@
       <if test="data != null">
         data = #{data,jdbcType=LONGVARCHAR},
       </if>
+      push_time = now()
     </set>
     where id = #{id,jdbcType=BIGINT}
   </update>
@@ -123,9 +128,6 @@
   <update id="updateByNumber" parameterType="cn.logistics.entity.LogisticsEntity">
     update logistics
     <set>
-      <if test="expressCompanCode != null">
-        express_compan_code = #{expressCompanCode,jdbcType=VARCHAR},
-      </if>
       <if test="status != null">
         status = #{status,jdbcType=INTEGER},
       </if>
@@ -142,6 +144,10 @@
         data = #{data,jdbcType=LONGVARCHAR},
       </if>
     </set>
-    where logistics_no = #{logisticsNo,jdbcType=VARCHAR}
+    where logistics_no = #{logisticsNo,jdbcType=VARCHAR} and express_compan_code = #{expressCompanCode,jdbcType=VARCHAR}
   </update>
+
+  <select id="findByNumberAndExpressCompanCode" resultMap="BaseResultMap">
+    select <include refid="Base_Column_List"/> from logistics where logistics_no = #{number,jdbcType=VARCHAR} and express_compan_code = #{company} limit 1
+  </select>
 </mapper>

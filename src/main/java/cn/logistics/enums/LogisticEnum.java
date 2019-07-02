@@ -4,11 +4,11 @@ import lombok.Getter;
 import lombok.Setter;
 
 public enum LogisticEnum {
-    LOGISTIC_KEY("key","VAuGivha3662"),
+    LOGISTIC_KEY("key","sOlXYjFm9071"),
     LOGISTIC_POLL_URL("poll_url","http://poll.kuaidi100.com/poll"),
     LOGISTIC_QUERY_URL("query_url","http://poll.kuaidi100.com/poll/query.do"),
-    LOGISTIC_CUSTOMER("customer","A3ECE14D2ABA8679FF8569EB20A45D0F"),
-    LOGISTIC_CALLBACK_URL("url","http://2552025dm3.wicp.vip:80/rollbackKuaiDi100");
+    LOGISTIC_CUSTOMER("customer","455DE9CF8418F0DFB6FBE3E2C83AFBF6"),
+    LOGISTIC_CALLBACK_URL("url","http://2552025dm3.wicp.vip/rollbackKuaiDi100");
     private String key ;
     private String value ;
 

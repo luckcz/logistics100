@@ -22,6 +22,8 @@ public interface LogisticsMapper {
 
     List<LogisticsEntity> findByNumber(String number);
 
+    LogisticsEntity findByNumberAndExpressCompanCode(@Param("number") String number,@Param("company") String company);
+
     int updateByNumber(LogisticsEntity record);
 
 }

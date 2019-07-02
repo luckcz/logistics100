@@ -1,9 +1,6 @@
 package cn.logistics.utils;
 
 import cn.logistics.enums.LogisticEnum;
-import cn.logistics.vo.PollResult;
-import com.google.gson.Gson;
-import io.netty.util.internal.StringUtil;
 import lombok.extern.slf4j.Slf4j;
 
 import java.util.HashMap;
